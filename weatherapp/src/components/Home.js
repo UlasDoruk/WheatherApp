@@ -1,11 +1,10 @@
-
-import Navbar from "./Navbar"
+import Cards from "./Cards"
 import Footer from "./Footer"
 
 function Home() {
   return (
     <div>
-    <Navbar/>
+    <Cards/>
     <Footer/>
     </div>
   )
