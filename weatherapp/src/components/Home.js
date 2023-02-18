@@ -1,10 +1,12 @@
-import Cards from "./Cards"
+import Card from "./Card"
 import Footer from "./Footer"
+import SearchBar from "./SearchBar";
 
 function Home() {
   return (
-    <div>
-    <Cards/>
+    <div >
+    <SearchBar/>
+    <Card/>
     <Footer/>
     </div>
   )
