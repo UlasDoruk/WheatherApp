@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { fetchData } from "../redux/weatherSlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -23,7 +23,7 @@ function Cards() {
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {item.name}
         </h5>
-        <p className="font-normal text-gray-700 dark:text-gray-400">
+        <p className="font-normal  text-white">
           {temp.temp} Feels : {temp.feels_like} Humi : {temp.humidity}
         </p> 
         <p>{cityWeather.main} Descrip : {cityWeather.description}</p>
