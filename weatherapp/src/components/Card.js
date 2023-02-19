@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import { fetchDaily, fetchData } from "../redux/weatherSlice";
+import { fetchDaily } from "../redux/weatherSlice";
 import { useDispatch, useSelector } from "react-redux";
+import moment from "moment"
 
 function Cards() {
 
@@ -10,39 +11,54 @@ function Cards() {
    const temp = useSelector((state)=>state.weather.temp)
    const cityWeather =  useSelector((state)=>state.weather.cityWeather)
    const wind = useSelector((state)=>state.weather.wind)
+   const day = useSelector((state)=>state.weather.day)
    const fifeDays = useSelector((state)=>state.weather.fifeDays)
 
-  // console.log(fifeDays)
-  console.log(temp)
+  console.log(day);
 
    let dispatch = useDispatch();
 
    useEffect(() => {
-     dispatch(fetchData(city));
      dispatch(fetchDaily(city))
    }, [dispatch]);
 
   return (
     <>
-      {fifeDays.map((element, index) => {
-        return (
-          <div className="block max-w-sm p-6 bg-white border border-gray-200  shadow dark:bg-gray-800 dark:border-gray-700" key={index}>
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              {item}
-            </h5>
-            <p className="font-normal  text-white">
-              {temp.temp} Feels : {temp.feels_like} Humi : {temp.humidity}
-            </p>
-            <p className="font-normal  text-white">
-              {cityWeather.main} Descrip : {cityWeather.description}
-            </p>
-            <p className="font-normal  text-white">
-              Wind Degree : {wind.deg} Wind Speed : {wind.speed}
-            </p>
-          </div>
-        );
-      })}
-     
+      <div className="bg-blue-300 flex-row flex m-2 shadow-2xl	shadow-slate-400 ">
+        {fifeDays.map((element, index) => {
+          return (
+            <div
+              className="hover:scale-105 p-6 m-2 rounded-lg bg-white border border-gray-200  shadow dark:bg-gray-800 dark:border-gray-700"
+              key={index}
+            >
+              <h4 className="mb-2 text-2xl font-black tracking-tight text-gray-900 dark:text-white">
+                {item}
+                <p>
+                  {moment([day[index]],"DD").format("dddd")}
+                </p>
+              </h4>
+              <p className="font-normal  text-white">
+                {cityWeather[index].main}
+                <img
+                  src={`${process.env.REACT_APP_ICON_URL}n/${cityWeather[index].icon}@2x.png`}
+                ></img>
+              </p>
+              <div>
+                <p className="font-normal  text-white">
+                  Temp : {temp[index].temp} Feels : {temp[index].feels_like}{" "}
+                  Humi : {temp[index].humidity}
+                </p>
+              </div>
+              <div>
+                <p className="font-normal  text-white">
+                  Wind Degree : {wind[index].deg} Wind Speed :{" "}
+                  {wind[index].speed}
+                </p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 }

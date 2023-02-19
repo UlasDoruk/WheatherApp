@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { fetchDaily, fetchData } from '../redux/weatherSlice';
+import { fetchDaily } from '../redux/weatherSlice';
 
 function Cities() {
 
@@ -9,14 +9,20 @@ function Cities() {
     let dispatch = useDispatch()
 
     const handleChoose=(item)=>{
-        dispatch(fetchData(item))
+        dispatch(fetchDaily(item))
     }
 
   return (
     <>
     {cities.map((item,index)=>{
         return (
-          <button key={index} className='font-bold  bg-sky-900 p-2 border-gray-800 border-solid   text-blue-50' onClick={()=>handleChoose(item)}>{item}</button>
+          <button
+            key={index}
+            className="focus:bg-blue-300 hover:bg-slate-900 font-bold  bg-sky-900 p-4 text-blue-50"
+            onClick={() => handleChoose(item)}
+          >
+            {item}
+          </button>
         );
     })}
      
