@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 function Cards() {
 
-  const city = "Ankara"
+  let city = "Ankara"
 
    const item = useSelector((state) => state.weather.data);
    const temp = useSelector((state)=>state.weather.temp)
@@ -25,9 +25,13 @@ function Cards() {
         </h5>
         <p className="font-normal  text-white">
           {temp.temp} Feels : {temp.feels_like} Humi : {temp.humidity}
-        </p> 
-        <p>{cityWeather.main} Descrip : {cityWeather.description}</p>
-        <p>Wind Degree : {wind.deg} Wind Speed : {wind.speed}</p>
+        </p>
+        <p className="font-normal  text-white">
+          {cityWeather.main} Descrip : {cityWeather.description}
+        </p>
+        <p className="font-normal  text-white"  >
+          Wind Degree : {wind.deg} Wind Speed : {wind.speed}
+        </p>
       </div>
     </>
   );

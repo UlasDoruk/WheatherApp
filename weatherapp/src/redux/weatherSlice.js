@@ -22,6 +22,7 @@ export const weatherSlice = createSlice({
         state.temp = action.payload.main
         state.cityWeather = action.payload.weather[0];
         state.wind = action.payload.wind
+        // console.log(action.payload.coord)
     }
   }
 });
