@@ -1,10 +1,10 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { fetchData } from '../redux/weatherSlice';
+import { fetchDaily, fetchData } from '../redux/weatherSlice';
 
 function Cities() {
 
-    const cities = ["New York", "London","Madrid","Paris","Berlin", "Tokyo", "Sydney"];
+    const cities = ["New York", "London","Madrid","Paris","Berlin","Ankara", "Tokyo", "Sydney"];
 
     let dispatch = useDispatch()
 
@@ -16,7 +16,7 @@ function Cities() {
     <>
     {cities.map((item,index)=>{
         return (
-          <button key={index} className='font-bold  bg-slate-100 p-2 ' onClick={()=>handleChoose(item)}>{item}</button>
+          <button key={index} className='font-bold  bg-sky-900 p-2 border-gray-800 border-solid   text-blue-50' onClick={()=>handleChoose(item)}>{item}</button>
         );
     })}
      
