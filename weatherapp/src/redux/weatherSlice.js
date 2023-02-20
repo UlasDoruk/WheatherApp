@@ -12,10 +12,8 @@ export const weatherSlice = createSlice({
   name: "weather",
   initialState:{
     data:[],
-    temp:[],
-    wind : [],
-    cityWeather : [],
     fifeDays : [],
+    treeHours : [],
     status : "idle"
   },
   reducers: {},
@@ -23,12 +21,13 @@ export const weatherSlice = createSlice({
     [fetchDaily.fulfilled]:(state,action)=>{
       state.status = "succeeded";
       state.data = action.payload.city.name;
-      const newList = []
+      const daily = []
       action.payload.list.forEach(element => {
         if (element.dt_txt.split("").slice(11, 13).join("") === "15")
-          newList.push(element)
+          daily.push(element)
       });
-      state.fifeDays = newList
+      state.fifeDays = daily;
+      state.treeHours= action.payload.list.slice(0,5)
     },[fetchDaily.pending]:(state)=>{
       state.status = "loading"
     },[fetchDaily.rejected]:(state,action)=>{

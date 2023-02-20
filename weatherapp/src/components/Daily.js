@@ -3,13 +3,13 @@ import { fetchDaily } from "../redux/weatherSlice";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment"
 
-function Card() {
+function Daily() {
 
   const city = "Ankara"
 
-   const item = useSelector((state) => state.weather.data);
-   const fifeDays = useSelector((state)=>state.weather.fifeDays)
-   const status = useSelector((state)=>state.weather.status)
+  const item = useSelector((state) => state.weather.data);
+  const fifeDays = useSelector((state)=>state.weather.fifeDays)
+  const status = useSelector((state)=>state.weather.status)
 
    let dispatch = useDispatch();
     
@@ -27,7 +27,7 @@ function Card() {
               key={index}
             >
               <h4 className="mb-2 text-2xl font-black tracking-tight text-gray-900 dark:text-white">
-                {item}{console.log(element.weather)}
+                {item}
                 <p>
                   {moment(
                     [element.dt_txt.split("").slice(8, 10).join("")],
@@ -64,4 +64,4 @@ function Card() {
   );
 }
 
-export default Card;
+export default Daily;
