@@ -8,6 +8,13 @@ export const fetchDaily = createAsyncThunk("weather/Daily", async (city) => {
   return res.data;
 });
 
+export const fethcWeather = createAsyncThunk("weather/Weather", async (city) => {
+  const res = await axios.get(
+    `${process.env.REACT_APP_API_URL}/forecast?q=${city}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
+  );
+  return res.data;
+});
+
 export const weatherSlice = createSlice({
   name: "weather",
   initialState:{
@@ -19,12 +26,16 @@ export const weatherSlice = createSlice({
     day : [],
     status : "idle"
   },
-  reducers: {},
+  reducers: {
+    getDaily:(state,action)=>{
+      state.data = action.payload
+    }
+  },
   extraReducers: {
     [fetchDaily.fulfilled]:(state,action)=>{
       state.status = "succeeded";
-      state.data = action.payload.city.name
-      const list = action.payload.list
+      state.data = action.payload.city.name;
+      const list = action.payload.list;
       list.forEach(element => {
         if (element.dt_txt.split("").slice(11, 13).join("") === "15")
           state.fifeDays.push(element);
@@ -40,8 +51,12 @@ export const weatherSlice = createSlice({
     },[fetchDaily.rejected]:(state,action)=>{
       state.status = "failed"
       state.error = action.error.message
-    }
+    },
+    // [fethcWeather.fulfilled]:(state,action)=>{
+      
+    //   console.log(action.payload)
+    // }
   }
 });
-
+export const { getDaily } = weatherSlice.actions;
 export default weatherSlice.reducer

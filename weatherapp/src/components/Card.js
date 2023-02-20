@@ -1,29 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { fetchDaily } from "../redux/weatherSlice";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment"
 
-function Cards() {
-
-  let city = "Ankara"
+function Card() {
 
    const item = useSelector((state) => state.weather.data);
+   const day = useSelector((state) => state.weather.day);
    const temp = useSelector((state)=>state.weather.temp)
    const cityWeather =  useSelector((state)=>state.weather.cityWeather)
    const wind = useSelector((state)=>state.weather.wind)
-   const day = useSelector((state)=>state.weather.day)
    const fifeDays = useSelector((state)=>state.weather.fifeDays)
    const status = useSelector((state)=>state.weather.status)
 
    let dispatch = useDispatch();
-    console.log(item)
+    
    useEffect(() => {
-    if (status === "idle"){dispatch(fetchDaily(city));} 
-   }, [dispatch,status]);
+      dispatch(fetchDaily("Ankara"))
+  },[dispatch]);
 
   return (
     <>
-      <div className="bg-blue-300 flex-row flex m-2 shadow-2xl	shadow-slate-400 ">
+      <div className="bg-blue-300 flex-row flex m-4 shadow-2xl	shadow-slate-400 ">
         {fifeDays.map((element, index) => {
           return (
             <div
@@ -63,4 +61,4 @@ function Cards() {
   );
 }
 
-export default Cards;
+export default Card;
