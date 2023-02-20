@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { fetchDaily } from '../redux/weatherSlice'
 
@@ -6,6 +7,7 @@ function SearchBar() {
 
   let dispatch = useDispatch()
 
+  const status = useSelector((state)=>state.weather.status)
   const [search,setSearch] = useState("")
 
   const handleSubmit = (e)=>{
@@ -35,7 +37,7 @@ function SearchBar() {
       </p>
       <form
         className="ml-10 flex justify-center align-baseline "
-        onSubmit={handleSubmit}
+       onSubmit={handleSubmit}
       >
         <input
           value={search}

@@ -13,14 +13,13 @@ function Cards() {
    const wind = useSelector((state)=>state.weather.wind)
    const day = useSelector((state)=>state.weather.day)
    const fifeDays = useSelector((state)=>state.weather.fifeDays)
-
-  console.log(day);
+   const status = useSelector((state)=>state.weather.status)
 
    let dispatch = useDispatch();
-
+    console.log(item)
    useEffect(() => {
-     dispatch(fetchDaily(city))
-   }, [dispatch]);
+    if (status === "idle"){dispatch(fetchDaily(city));} 
+   }, [dispatch,status]);
 
   return (
     <>
@@ -33,16 +32,17 @@ function Cards() {
             >
               <h4 className="mb-2 text-2xl font-black tracking-tight text-gray-900 dark:text-white">
                 {item}
-                <p>
-                  {moment([day[index]],"DD").format("dddd")}
-                </p>
+                <p>{moment([day[index]], "DD").format("dddd")}</p>
               </h4>
-              <p className="font-normal  text-white">
+              <div className="font-bold  text-white  p-2">
+                <div className="flex justify-center">
+                  <img
+                    className=""
+                    src={`${process.env.REACT_APP_ICON_URL}n/${cityWeather[index].icon}@2x.png`}
+                  ></img>
+                </div>
                 {cityWeather[index].main}
-                <img
-                  src={`${process.env.REACT_APP_ICON_URL}n/${cityWeather[index].icon}@2x.png`}
-                ></img>
-              </p>
+              </div>
               <div>
                 <p className="font-normal  text-white">
                   Temp : {temp[index].temp} Feels : {temp[index].feels_like}{" "}

@@ -16,11 +16,13 @@ export const weatherSlice = createSlice({
     wind : [],
     cityWeather : [],
     fifeDays : [],
-    day : []
+    day : [],
+    status : "idle"
   },
   reducers: {},
   extraReducers: {
     [fetchDaily.fulfilled]:(state,action)=>{
+      state.status = "succeeded";
       state.data = action.payload.city.name
       const list = action.payload.list
       list.forEach(element => {
@@ -33,6 +35,11 @@ export const weatherSlice = createSlice({
         state.cityWeather.push(e.weather[0]);
         state.wind.push(e.wind);
       })
+    },[fetchDaily.pending]:(state)=>{
+      state.status = "loading"
+    },[fetchDaily.rejected]:(state,action)=>{
+      state.status = "failed"
+      state.error = action.error.message
     }
   }
 });
