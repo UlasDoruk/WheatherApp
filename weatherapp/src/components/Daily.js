@@ -19,21 +19,21 @@ function Daily() {
 
   return (
     <>
-      <div className="bg-blue-300 flex-row flex m-4 shadow-2xl	shadow-slate-400 ">
+      <div className="bg-blue-300 flex-row flex m-2 rounded p-2">
         {fifeDays.map((element, index) => {
           return (
             <div
-              className="hover:scale-105 p-6 m-2 rounded-lg bg-white border border-gray-200  shadow dark:bg-gray-800 dark:border-gray-700"
+              className="hover:scale-105 p-6 m-2 rounded-lg bg-white border border-gray-200   dark:bg-gray-800 dark:border-gray-700"
               key={index}
             >
               <h4 className="mb-2 text-2xl font-black tracking-tight text-gray-900 dark:text-white">
                 {item}
-                <p>
+                <div className="flex justify-center">
                   {moment(
                     [element.dt_txt.split("").slice(8, 10).join("")],
                     "DD"
                   ).format("dddd")}
-                </p>
+                </div>
               </h4>
               <div className="font-bold  text-white  p-2">
                 <div className="flex justify-center">
@@ -52,7 +52,7 @@ function Daily() {
               </div>
               <div>
                 <p className="font-bold  text-white">
-                  Wind Degree : {element.wind.deg} 
+                  Wind Degree : {element.wind.deg}
                   Wind Speed :{element.wind.speed}
                 </p>
               </div>

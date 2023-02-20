@@ -1,9 +1,22 @@
-import React from 'react'
+// import "./Error.css"
 
 function Error() {
   return (
-    <div>404</div>
-  )
+    <body>
+      <section class="notFound">
+        <div class="img">
+          <img
+            src="https://assets.codepen.io/5647096/backToTheHomepage.png"
+            alt="Back to the Homepage"
+          />
+          <img
+            src="https://assets.codepen.io/5647096/Delorean.png"
+            alt="El Delorean, El Doc y Marti McFly"
+          />
+        </div>
+      </section>
+    </body>
+  );
 }
 
 export default Error
