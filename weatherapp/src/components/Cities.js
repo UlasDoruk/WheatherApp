@@ -1,17 +1,14 @@
-import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { fetchDaily, fethcWeather } from "../redux/weatherSlice";
-import { getDaily } from '../redux/weatherSlice';
+import { fetchDaily } from '../redux/weatherSlice';
 
 function Cities() {
 
     const cities = ["New York", "London","Madrid","Paris","Berlin","İstanbul","Ankara", "Tokyo", "Sydney"];
-    const status = useSelector((state)=>state.weather.status)
 
     let dispatch = useDispatch()
 
     const handleChoose=(item)=>{
-        dispatch(getDaily(item))
+        dispatch(fetchDaily(item))
       }
 
   return (

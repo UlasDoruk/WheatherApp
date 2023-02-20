@@ -6,14 +6,7 @@ export const fetchDaily = createAsyncThunk("weather/Daily", async (city) => {
     `${process.env.REACT_APP_API_URL}/forecast?q=${city}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
   );
   return res.data;
-});
-
-export const fethcWeather = createAsyncThunk("weather/Weather", async (city) => {
-  const res = await axios.get(
-    `${process.env.REACT_APP_API_URL}/forecast?q=${city}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
-  );
-  return res.data;
-});
+})
 
 export const weatherSlice = createSlice({
   name: "weather",
@@ -23,40 +16,25 @@ export const weatherSlice = createSlice({
     wind : [],
     cityWeather : [],
     fifeDays : [],
-    day : [],
     status : "idle"
   },
-  reducers: {
-    getDaily:(state,action)=>{
-      state.data = action.payload
-    }
-  },
+  reducers: {},
   extraReducers: {
     [fetchDaily.fulfilled]:(state,action)=>{
       state.status = "succeeded";
       state.data = action.payload.city.name;
-      const list = action.payload.list;
-      list.forEach(element => {
+      const newList = []
+      action.payload.list.forEach(element => {
         if (element.dt_txt.split("").slice(11, 13).join("") === "15")
-          state.fifeDays.push(element);
+          newList.push(element)
       });
-      state.fifeDays.map((e)=>{
-        state.day.push(e.dt_txt.split("").slice(8, 10).join(""));
-        state.temp.push(e.main);
-        state.cityWeather.push(e.weather[0]);
-        state.wind.push(e.wind);
-      })
+      state.fifeDays = newList
     },[fetchDaily.pending]:(state)=>{
       state.status = "loading"
     },[fetchDaily.rejected]:(state,action)=>{
       state.status = "failed"
       state.error = action.error.message
-    },
-    // [fethcWeather.fulfilled]:(state,action)=>{
-      
-    //   console.log(action.payload)
-    // }
+    }
   }
 });
-export const { getDaily } = weatherSlice.actions;
 export default weatherSlice.reducer

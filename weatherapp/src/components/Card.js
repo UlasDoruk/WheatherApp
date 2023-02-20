@@ -1,23 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { fetchDaily } from "../redux/weatherSlice";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment"
 
 function Card() {
 
+  const city = "Ankara"
+
    const item = useSelector((state) => state.weather.data);
-   const day = useSelector((state) => state.weather.day);
-   const temp = useSelector((state)=>state.weather.temp)
-   const cityWeather =  useSelector((state)=>state.weather.cityWeather)
-   const wind = useSelector((state)=>state.weather.wind)
    const fifeDays = useSelector((state)=>state.weather.fifeDays)
    const status = useSelector((state)=>state.weather.status)
 
    let dispatch = useDispatch();
     
    useEffect(() => {
-      dispatch(fetchDaily("Ankara"))
-  },[dispatch]);
+    if(status === "idle"){dispatch(fetchDaily(city));}
+  },[dispatch,status]);
 
   return (
     <>
@@ -29,28 +27,33 @@ function Card() {
               key={index}
             >
               <h4 className="mb-2 text-2xl font-black tracking-tight text-gray-900 dark:text-white">
-                {item}
-                <p>{moment([day[index]], "DD").format("dddd")}</p>
+                {item}{console.log(element.weather)}
+                <p>
+                  {moment(
+                    [element.dt_txt.split("").slice(8, 10).join("")],
+                    "DD"
+                  ).format("dddd")}
+                </p>
               </h4>
               <div className="font-bold  text-white  p-2">
                 <div className="flex justify-center">
                   <img
                     className=""
-                    src={`${process.env.REACT_APP_ICON_URL}n/${cityWeather[index].icon}@2x.png`}
+                    src={`${process.env.REACT_APP_ICON_URL}n/${element.weather[0].icon}@2x.png`}
                   ></img>
                 </div>
-                {cityWeather[index].main}
+                <div>{element.weather[0].main}</div>
               </div>
               <div>
-                <p className="font-normal  text-white">
-                  Temp : {temp[index].temp} Feels : {temp[index].feels_like}{" "}
-                  Humi : {temp[index].humidity}
+                <p className="font-bold  text-white">
+                  Temp : {element.main.temp} Feels :{element.main.feels_like}
+                  Humi : {element.main.humidity}
                 </p>
               </div>
               <div>
-                <p className="font-normal  text-white">
-                  Wind Degree : {wind[index].deg} Wind Speed :{" "}
-                  {wind[index].speed}
+                <p className="font-bold  text-white">
+                  Wind Degree : {element.wind.deg} 
+                  Wind Speed :{element.wind.speed}
                 </p>
               </div>
             </div>

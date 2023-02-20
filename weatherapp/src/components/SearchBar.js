@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from "react-redux";
-import { getDaily } from '../redux/weatherSlice'
+import { fetchDaily } from '../redux/weatherSlice';
 
 function SearchBar() {
 
@@ -11,10 +11,10 @@ function SearchBar() {
   const handleSubmit = (e)=>{
     e.preventDefault()
     if(search){
-    dispatch(getDaily(search));
+    dispatch(fetchDaily(search));
     setSearch("")
     }else{
-      window.alert("Search a City")
+       window.alert("Search a City");
     }
   }
 
