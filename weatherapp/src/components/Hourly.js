@@ -30,23 +30,22 @@ function Hourly() {
         {status === "loading" ? (
           <Loading />
         ) : (
-          <div className="card">
+          <div className="card sm:flex  flex-wrap">
             {treeHours.map((element, index) => {
               return (
                 <div className="fdiv" key={index}>
                   <h4 className="name">
                     {item}
-                    <div className="flex justify-center p-2">
+                    <div className="flex justify-center sm:p-2">
                       {moment(
                         [element.dt_txt.split("").slice(10, 16).join("")],
                         "HH:mm"
                       ).format("HH:mm")}
                     </div>
                   </h4>
-                  <div className="font-bold  text-white  p-2">
+                  <div className="font-bold  text-white sm:p-2">
                     <div className="flex justify-center">
                       <img
-                        className=""
                         src={`${process.env.REACT_APP_ICON_URL}n/${element.weather[0].icon}@2x.png`}
                       ></img>
                     </div>
@@ -71,7 +70,7 @@ function Hourly() {
                   <div className="font-semibold  text-white ">
                     <span className="innerSpan">
                       Wind Degree
-                      <span className="flex justify-around ml-16 ">
+                      <span className="flex justify-around ml-16 sm:ml-16 ">
                         {element.wind.deg}
                         <GiWindsock className="iconM" />
                       </span>

@@ -2,22 +2,19 @@ import { useSelector } from "react-redux";
 import Error from "./Error";
 import Hourly from "./Hourly";
 import Daily from "./Daily";
-import Cities from "./Cities";
-import Footer from "./Footer"
-import SearchBar from "./SearchBar";
+import Footer from "./Footer";
+import Navbar from "./Navbar";
 
 function Home() {
-
   const status = useSelector((state) => state.weather.status);
 
   return (
-    <div>
+    <div className="">
       {status === "failed" ? (
         <Error />
       ) : (
         <>
-          <SearchBar />
-          <Cities />
+          <Navbar />
           <div className="title">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -55,4 +52,4 @@ function Home() {
   );
 }
 
-export default Home
+export default Home;

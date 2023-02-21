@@ -28,7 +28,7 @@ function Daily() {
       {status === "loading" ? (
         <Loading />
       ) : (
-        <div className="card">
+        <div className="card sm:flex flex-wrap">
           {fifeDays.map((element, index) => {
             return (
               <div className="fdiv" key={index}>
