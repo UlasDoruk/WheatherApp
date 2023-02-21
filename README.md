@@ -1,13 +1,13 @@
 # Weather APP
 
-...Daily and Hourly weather forecast
-...In Dropdown Top Cities
-...Search any city
+- **Daily and Hourly weather forecast**
+- **In Dropdown Top Cities**
+- **Search any city**
 ---
 [API](https://openweathermap.org/api)
 ---
 
---*[Here!](https://udk-weatherapp.netlify.app/)
+Link -> [udk-weatherapp](https://udk-weatherapp.netlify.app/)
 
 ## Used Techs. and libraries
 
