@@ -3,9 +3,8 @@
 - **Daily and Hourly weather forecast**
 - **In Dropdown Top Cities**
 - **Search any city**
----
+
 [API](https://openweathermap.org/api)
----
 
 Link -> [udk-weatherapp](https://udk-weatherapp.netlify.app/)
 
