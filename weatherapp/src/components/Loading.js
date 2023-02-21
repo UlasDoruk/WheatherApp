@@ -2,7 +2,7 @@ import React from 'react'
 
 function Loading() {
   return (
-    <div>...Loading</div>
+    <div className='text-white font-bold mt-5'>...Loading</div>
   )
 }
 
