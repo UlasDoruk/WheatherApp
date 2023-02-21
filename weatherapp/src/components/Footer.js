@@ -3,7 +3,7 @@ import React from 'react'
 function Footer() {
   return (
     <>
-      <footer className="bg-slate-900 text-yellow-50 flex justify-center p-2 fixed inset-x-0 bottom-0">
+      <footer className="bg-slate-900 text-yellow-50 flex justify-center p-2 mt-5 rounded ">
         <p className="p-2 font-bold">Created by UDK</p>
         <button className="p-2">
           <a href="https://github.com/UlasDoruk">

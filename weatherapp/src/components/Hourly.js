@@ -3,6 +3,11 @@ import { fetchDaily } from "../redux/weatherSlice";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 
+import { TbTemperatureCelsius } from "react-icons/tb";
+import { WiHumidity } from "react-icons/wi";
+import { SiSpeedtest } from "react-icons/si"
+import { GiWindsock } from "react-icons/gi"
+
 function Hourly() {
 
     const city = "Ankara";
@@ -21,7 +26,7 @@ function Hourly() {
 
     return (
       <>
-        <div className="bg-blue-300 flex-row flex m-2  p-2 rounded">
+        <div className="bg-blue-300 flex-row flex m-2 mt-5 p-2 rounded  justify-around">
           {treeHours.map((element, index) => {
             return (
               <div
@@ -31,7 +36,6 @@ function Hourly() {
                 <h4 className="mb-2 text-2xl font-black tracking-tight text-gray-900 dark:text-white">
                   {item}
                   <div className="flex justify-center p-2">
-                    
                     {moment(
                       [element.dt_txt.split("").slice(10, 16).join("")],
                       "HH:mm"
@@ -47,17 +51,37 @@ function Hourly() {
                   </div>
                   <div>{element.weather[0].main}</div>
                 </div>
-                <div>
-                  <p className="font-bold  text-white">
-                    Temp : {element.main.temp} Feels :{element.main.feels_like}
-                    Humi : {element.main.humidity}
-                  </p>
+                <div className="font-semibold  text-white ">
+                  <span className="bg-slate-700 rounded p-2 m-2 flex justify-between">
+                    Temperature
+                    <span className="flex">
+                      {Math.floor(element.main.temp)}
+                      <TbTemperatureCelsius className="mt-1 ml-2" />
+                    </span>
+                  </span>
+                  <span className="bg-slate-700 rounded p-2 m-2 flex justify-between">
+                    Humidity
+                    <span className="flex">
+                      {element.main.humidity}
+                      <WiHumidity className="mt-1 ml-2" />
+                    </span>
+                  </span>
                 </div>
-                <div>
-                  <p className="font-bold  text-white">
-                    Wind Degree : {element.wind.deg}
-                    Wind Speed :{element.wind.speed}
-                  </p>
+                <div className="font-semibold  text-white ">
+                  <span className="bg-slate-700 rounded p-2 m-2 flex justify-between">
+                    Wind Degree
+                    <span className="flex justify-around ml-16 ">
+                      {element.wind.deg}
+                      <GiWindsock className="mt-1 ml-2" />
+                    </span>
+                  </span>
+                  <span className="bg-slate-700 rounded p-2 m-2 flex justify-between">
+                    Wind Speed
+                    <span className="flex">
+                      {element.wind.speed}
+                      <SiSpeedtest className="mt-1 ml-2" />
+                    </span>
+                  </span>
                 </div>
               </div>
             );

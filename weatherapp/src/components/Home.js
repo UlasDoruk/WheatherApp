@@ -18,7 +18,7 @@ function Home() {
         <>
           <SearchBar />
           <Cities />
-          <div className="bg-white  p-1 m-2 mt-5 flex justify-center">
+          <div className="bg-white  p-1 m-2 mt-5 flex justify-center rounded">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -33,7 +33,7 @@ function Home() {
             </svg>
           </div>
           <Hourly />
-          <div className="bg-white  p-1 m-2 mt-5 flex  justify-center">
+          <div className="bg-white  p-1 m-2 mt-5 flex justify-center rounded">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
