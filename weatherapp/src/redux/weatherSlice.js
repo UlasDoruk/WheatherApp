@@ -20,7 +20,6 @@ export const weatherSlice = createSlice({
   extraReducers: {
     [fetchDaily.fulfilled]:(state,action)=>{
       state.status = "succeeded";
-      console.log(action.payload)
       state.data = action.payload.city.name;
       const daily = []
       action.payload.list.forEach(element => {

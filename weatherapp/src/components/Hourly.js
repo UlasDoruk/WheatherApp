@@ -26,14 +26,11 @@ function Hourly() {
 
     return (
       <>
-        <div className="bg-blue-300 flex-row flex m-2 mt-5 p-2 rounded  justify-around">
+        <div className= "card">
           {treeHours.map((element, index) => {
             return (
-              <div
-                className="hover:scale-105 p-6 m-2 rounded-lg bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700"
-                key={index}
-              >
-                <h4 className="mb-2 text-2xl font-black tracking-tight text-gray-900 dark:text-white">
+              <div className="fdiv" key={index}>
+                <h4 className="name">
                   {item}
                   <div className="flex justify-center p-2">
                     {moment(
@@ -52,34 +49,34 @@ function Hourly() {
                   <div>{element.weather[0].main}</div>
                 </div>
                 <div className="font-semibold  text-white ">
-                  <span className="bg-slate-700 rounded p-2 m-2 flex justify-between">
+                  <span className="innerSpan">
                     Temperature
                     <span className="flex">
                       {Math.floor(element.main.temp)}
-                      <TbTemperatureCelsius className="mt-1 ml-2" />
+                      <TbTemperatureCelsius className="iconM" />
                     </span>
                   </span>
-                  <span className="bg-slate-700 rounded p-2 m-2 flex justify-between">
+                  <span className="innerSpan">
                     Humidity
                     <span className="flex">
                       {element.main.humidity}
-                      <WiHumidity className="mt-1 ml-2" />
+                      <WiHumidity className="iconM" />
                     </span>
                   </span>
                 </div>
                 <div className="font-semibold  text-white ">
-                  <span className="bg-slate-700 rounded p-2 m-2 flex justify-between">
+                  <span className="innerSpan">
                     Wind Degree
                     <span className="flex justify-around ml-16 ">
                       {element.wind.deg}
-                      <GiWindsock className="mt-1 ml-2" />
+                      <GiWindsock className="iconM" />
                     </span>
                   </span>
-                  <span className="bg-slate-700 rounded p-2 m-2 flex justify-between">
+                  <span className="innerSpan">
                     Wind Speed
                     <span className="flex">
                       {element.wind.speed}
-                      <SiSpeedtest className="mt-1 ml-2" />
+                      <SiSpeedtest className="iconM" />
                     </span>
                   </span>
                 </div>
