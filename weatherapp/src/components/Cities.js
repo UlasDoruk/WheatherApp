@@ -40,7 +40,7 @@ export default function Cities() {
             return (
               <li
                 key={index}
-                className="focus:bg-blue-300 hover:bg-slate-900 hover:cursor-pointer   font-bold  p-1 sm:p-4 text-blue-50"
+                className="focus:bg-blue-300 hover:bg-slate-900 hover:cursor-pointer font-bold  p-1 sm:p-4 text-blue-50"
                 onClick={() => handleChoose(item)}>
                 {item}
               </li>
