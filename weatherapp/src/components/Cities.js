@@ -36,14 +36,12 @@ export default function Cities() {
           {cities.map((item, index) => {
             return (
               <ul
+              key={index}
                 className=" text-gray-700 "
-                aria-labelledby="dropdownDefaultButton"
-              >
+                aria-labelledby="dropdownDefaultButton">
                 <li
-                  key={index}
                   className="focus:bg-blue-300 hover:bg-slate-900 hover:cursor-pointer font-bold p-2 sm:p-4 text-blue-50"
-                  onClick={() => handleChoose(item)}
-                >
+                  onClick={() => handleChoose(item)}>
                   {item}
                 </li>
               </ul>
