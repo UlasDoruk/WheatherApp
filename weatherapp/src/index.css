@@ -10,7 +10,7 @@
         @apply sm:hover:scale-105 p-6 m-2 rounded-lg bg-gray-800 
     }
     .name{
-        @apply sm:mb-2 sm:text-2xl font-black  text-gray-900 dark:text-white
+        @apply sm:mb-2 sm:text-2xl font-black  text-white
     }
     .innerSpan{
         @apply bg-slate-700 rounded p-2 m-2 flex justify-between

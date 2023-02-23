@@ -32,21 +32,23 @@ export default function Cities() {
         <IoIosArrowDropdownCircle className="ml-2"/>
       </button>
       <div id="dropdown"
-        className="z-10 hidden  divide-y divide-gray-100 rounded-lg shadow w-44 bg-gray-700">
-        <ul
-          className="py-2 text-sm text-gray-700 "
-          aria-labelledby="dropdownDefaultButton">
+        className="z-10 hidden mr-2 rounded-lg shadow w-auto bg-gray-700">
           {cities.map((item, index) => {
             return (
-              <li
-                key={index}
-                className="focus:bg-blue-300 hover:bg-slate-900 hover:cursor-pointer font-bold  p-1 sm:p-4 text-blue-50"
-                onClick={() => handleChoose(item)}>
-                {item}
-              </li>
+              <ul
+                className=" text-gray-700 "
+                aria-labelledby="dropdownDefaultButton"
+              >
+                <li
+                  key={index}
+                  className="focus:bg-blue-300 hover:bg-slate-900 hover:cursor-pointer font-bold p-2 sm:p-4 text-blue-50"
+                  onClick={() => handleChoose(item)}
+                >
+                  {item}
+                </li>
+              </ul>
             );
           })}
-        </ul>
       </div>
     </>
   );
