@@ -1,6 +1,6 @@
 # Weather APP
 
-- **Daily and Hourly weather forecast**
+- **Daily and 3 hours weather forecast**
 - **In Dropdown Top Cities**
 - **Search any city**
 - [API](https://openweathermap.org/api)
