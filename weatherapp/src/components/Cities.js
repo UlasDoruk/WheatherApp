@@ -1,6 +1,15 @@
+import React from "react";
 import { useDispatch } from "react-redux";
+
+// Redux
 import { fetchDaily } from "../redux/weatherSlice";
-import {IoIosArrowDropdownCircle} from "react-icons/io"
+
+// Material IU
+import Popover from "@mui/material/Popover";
+
+// Icon
+import {MdOutlineFormatAlignJustify} from "react-icons/md"
+
 
 export default function Cities() {
   const cities = [
@@ -15,6 +24,22 @@ export default function Cities() {
     "Sydney",
   ];
 
+  // Material UI Popover
+  // ---------------------
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
+  // ---------------------
+
   let dispatch = useDispatch();
 
   const handleChoose = (item) => {
@@ -23,31 +48,49 @@ export default function Cities() {
 
   return (
     <>
-      <button
+      {/* <button
         id="dropdownDefaultButton"
         data-dropdown-toggle="dropdown"
         className="text-white bg-blue-800 hover:bg-blue-600 ml-2 mt-2 p-2 mb-2 sm:ml-10 font-bold rounded text-center  items-center flex "
-        type="button">
+        type="button"
+      >
         City
-        <IoIosArrowDropdownCircle className="ml-2"/>
+        <IoIosArrowDropdownCircle className="ml-2" />
+      </button> */}
+      <button
+        className=" pr-2 m-1 pl-2 mr-1 "
+        aria-describedby={id}
+        onClick={handleClick}
+      ><MdOutlineFormatAlignJustify className="w-5 h-5" />
       </button>
-      <div id="dropdown"
-        className="z-10 hidden mr-2 rounded-lg shadow w-auto bg-gray-700">
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+      >
           {cities.map((item, index) => {
             return (
               <ul
-              key={index}
-                className=" text-gray-700 "
-                aria-labelledby="dropdownDefaultButton">
+                key={index}
+                className="bg-slate-900"
+                aria-labelledby="dropdownDefaultButton"
+              >
                 <li
-                  className="focus:bg-blue-300 hover:bg-slate-900 hover:cursor-pointer font-bold p-2 sm:p-4 text-blue-50"
-                  onClick={() => handleChoose(item)}>
+                  className="hover:bg-slate-700 hover:cursor-pointer font-bold p-2 sm:p-4 text-white"
+                  onClick={() => handleChoose(item)}
+                >
                   {item}
                 </li>
               </ul>
             );
           })}
-      </div>
+        {/* </div> */}
+      </Popover>
     </>
   );
 }

@@ -24,13 +24,13 @@ function Searchbar() {
     >
       <input
         value={search}
-        className="rounded p-2  mt-2 mb-2 w-full"
+        className="rounded-l p-2  mt-2 mb-2 w-full"
         type={"text"}
         placeholder="Search a City"
         onChange={(e) => setSearch(e.target.value)}
       ></input>
       <button
-        className="hover:scale-105 bg-blue-800 rounded  mt-2 mb-2 p-2 sm:font-bold text-white"
+        className="hover:scale-105 bg-blue-800 rounded-r  mt-2 mb-2 p-2 sm:font-bold text-white"
         type="submit"
       >
         <svg
