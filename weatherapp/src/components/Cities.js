@@ -48,15 +48,6 @@ export default function Cities() {
 
   return (
     <>
-      {/* <button
-        id="dropdownDefaultButton"
-        data-dropdown-toggle="dropdown"
-        className="text-white bg-blue-800 hover:bg-blue-600 ml-2 mt-2 p-2 mb-2 sm:ml-10 font-bold rounded text-center  items-center flex "
-        type="button"
-      >
-        City
-        <IoIosArrowDropdownCircle className="ml-2" />
-      </button> */}
       <button
         className=" pr-2 m-1 pl-2 mr-1 "
         aria-describedby={id}
@@ -89,7 +80,6 @@ export default function Cities() {
               </ul>
             );
           })}
-        {/* </div> */}
       </Popover>
     </>
   );

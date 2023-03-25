@@ -12,7 +12,7 @@ function Searchbar() {
     if (search) {
       dispatch(fetchDaily(search));
       setSearch("");
-    } else {
+    }else {
       window.alert("Search a City");
     }
   };
